@@ -3,21 +3,26 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    // The actual timer value
     public float timer;
+    // The value we will reset to
     public float initialValue;
     public TextMeshProUGUI timerText;
 
+    // When the game starts use the countdown
     private void Start()
     {
         CountDown();
     }
 
+    // Set's the timer to three
     public void CountDown()
     {
         timer = 3;
         UpdateText(timer);
     }
 
+    // Reset the timer to the intial value
     public void Reset()
     {
         timer = initialValue;
@@ -44,8 +49,9 @@ public class Timer : MonoBehaviour
         }
     }
 
+    // Update the text in the formart "10.0s"
     public void UpdateText(float time)
     {
-        timerText.text = $"{timer.ToString("F1")}s";
+        timerText.text = $"{time.ToString("F1")}s";
     }
 }
