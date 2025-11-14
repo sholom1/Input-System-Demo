@@ -2,9 +2,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public Animator anim;
+    public new Collider2D collider;
+
+    private void Start()
     {
-        //GameManager.instance.OnPlayerJoined(this);
+        anim = GetComponent<Animator>();
+        collider = GetComponent<Collider2D>();
+    }
+
+    public void Die()
+    {
+        anim.SetBool("Dying", true);
+    }
+
+    public void Revive(Vector2 position)
+    {
+
+        transform.position = position;
+        anim.SetBool("Dying", false);
+        collider.enabled = true;
     }
 }
